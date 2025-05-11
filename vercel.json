@@ -1,10 +1,10 @@
 {
     "version": 2,
     "builds": [
-      { "src": "src/index.ts", "use": "@vercel/node" }
+      { "src": "dist/index.js", "use": "@vercel/node" }
     ],
     "routes": [
-      { "src": "/webhook", "dest": "/src/index.ts" },
-      { "src": "/query/(.*)", "dest": "/src/index.ts" }
+      { "src": "/webhook", "dest": "dist/index.js" },
+      { "src": "/query/(.*)", "dest": "dist/index.js" }
     ]
   }
