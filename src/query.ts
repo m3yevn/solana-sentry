@@ -1,14 +1,10 @@
 import { Router } from "express";
-import { Connection } from "@solana/web3.js";
+import { connection } from "./solana";
 
 const router = Router();
 
 router.get("/:txHash", async (req, res) => {
   const txHash = req.params.txHash;
-  const connection = new Connection(
-    process.env.SOLANA_RPC_URL || "https://api.devnet.solana.com",
-    "confirmed"
-  );
 
   try {
     const tx = await connection.getParsedTransaction(txHash, {
