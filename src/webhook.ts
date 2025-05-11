@@ -9,7 +9,7 @@ const router = Router();
 router.post("/", async (req, res) => {
   try {
     const event = req.body?.event?.transaction?.[0];
-    console.log("Event received:", event);
+    console.debug("Event received:", event);
 
     if (!event) {
       console.error("400: Invalid webhook payload");
