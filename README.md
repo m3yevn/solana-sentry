@@ -1,6 +1,6 @@
-# MugglePay Backend
+# Solana Sentry
 
-A TypeScript-based backend service for handling Solana transactions and webhooks.
+A vigilant transaction monitoring and webhook service for Solana, standing guard over your blockchain transactions.
 
 ## Features
 

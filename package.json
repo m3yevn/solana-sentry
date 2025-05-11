@@ -1,7 +1,7 @@
 {
-  "name": "mugglepay-backend",
+  "name": "solana-sentry",
   "version": "1.0.0",
-  "description": "Backend service for MugglePay Solana integration",
+  "description": "A vigilant transaction monitoring and webhook service for Solana",
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
