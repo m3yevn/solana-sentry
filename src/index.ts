@@ -16,7 +16,7 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.get("/", (req, res) => {
-  res.send("MugglePay API");
+  res.send("Solana Sentry API");
 });
 
 // Routes
