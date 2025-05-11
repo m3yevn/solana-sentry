@@ -9,14 +9,17 @@ const router = Router();
 router.post("/", async (req, res) => {
   try {
     const event = req.body?.event?.transaction?.[0];
+    console.log("Event received:", event);
 
     if (!event) {
+      console.error("400: Invalid webhook payload");
       return res.status(400).json({ error: "Invalid webhook payload" });
     }
 
     const signature = event.signature;
 
     if (!signature) {
+      console.error("400: Transaction signature missing");
       return res.status(400).json({ error: "Transaction signature missing" });
     }
 
@@ -26,6 +29,7 @@ router.post("/", async (req, res) => {
     });
 
     if (!tx) {
+      console.error("404: Transaction not found on chain");
       return res.status(404).json({ error: "Transaction not found on chain" });
     }
 
