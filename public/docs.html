@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Documentation — Solana Sentry</title>
+    <meta
+      name="description"
+      content="Solana Sentry docs: install, environment variables, query API, webhook setup with Alchemy."
+    />
+    <link rel="canonical" href="https://solana-sentry.vercel.app/docs" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="/" class="logo">
+          <span class="logo-mark">🛡️</span>
+          <span class="logo-text">Solana<strong>Sentry</strong></span>
+        </a>
+        <nav class="nav">
+          <a href="/docs" aria-current="page">Docs</a>
+          <a href="/#features">Features</a>
+          <a href="https://github.com/m3yevn/solana-sentry" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="docs-page">
+      <div class="container docs-layout">
+        <aside class="docs-sidebar">
+          <p class="docs-sidebar-title">On this page</p>
+          <nav class="docs-toc">
+            <a href="#install">Install</a>
+            <a href="#env">Environment</a>
+            <a href="#api">API</a>
+            <a href="#webhook">Webhook setup</a>
+            <a href="#deploy">Deploy</a>
+          </nav>
+        </aside>
+
+        <article class="docs-content">
+          <h1>Documentation</h1>
+          <p class="docs-lead">
+            <strong>Solana Sentry</strong> is a TypeScript Express service for querying Solana
+            transactions and handling Alchemy webhook notifications with USDC verification.
+          </p>
+
+          <section id="install">
+            <h2>Install</h2>
+            <pre class="code-block"><code>git clone https://github.com/m3yevn/solana-sentry
+cd solana-sentry
+npm install
+cp .env.example .env   # create from README vars
+npm run dev</code></pre>
+            <p>Requires <strong>Node.js 18+</strong>.</p>
+          </section>
+
+          <section id="env">
+            <h2>Environment variables</h2>
+            <table class="template-table">
+              <thead>
+                <tr><th>Variable</th><th>Description</th><th>Default</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>PORT</code></td><td>Local server port</td><td><code>10000</code></td></tr>
+                <tr><td><code>SOLANA_RPC_URL</code></td><td>Solana RPC endpoint</td><td>devnet</td></tr>
+                <tr><td><code>SOLANA_ADDR</code></td><td>Your wallet address (webhook target)</td><td>—</td></tr>
+                <tr><td><code>USDC_MINT</code></td><td>USDC mint address for transfer checks</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section id="api">
+            <h2>API reference</h2>
+
+            <h3>Health check</h3>
+            <pre class="code-block"><code>GET /health
+
+{ "status": "ok" }</code></pre>
+
+            <h3>Query transaction</h3>
+            <pre class="code-block"><code>GET /query/:txHash
+
+{
+  "txHash": "...",
+  "tokens": [{ "mint": "...", "amount": 0.01 }]
+}</code></pre>
+
+            <h3>Webhook</h3>
+            <pre class="code-block"><code>POST /webhook
+Content-Type: application/json
+
+# Alchemy transaction webhook payload
+# Verifies USDC transfer to SOLANA_ADDR</code></pre>
+          </section>
+
+          <section id="webhook">
+            <h2>Webhook setup (Alchemy)</h2>
+            <ol style="color: var(--muted); margin-left: 20px;">
+              <li>Create an Alchemy app on Solana devnet or mainnet.</li>
+              <li>Add a webhook pointing to <code>https://your-domain/webhook</code>.</li>
+              <li>Set <code>SOLANA_ADDR</code> and <code>USDC_MINT</code> in Vercel env.</li>
+              <li>Send a test USDC transfer — check server logs for verification.</li>
+            </ol>
+          </section>
+
+          <section id="deploy">
+            <h2>Deploy (Vercel)</h2>
+            <pre class="code-block"><code>vercel --prod
+
+# Set env vars in Vercel dashboard:
+# SOLANA_RPC_URL, SOLANA_ADDR, USDC_MINT</code></pre>
+            <p>Static landing at <code>/</code> and docs at <code>/docs</code>. API routes proxy to the Express server.</p>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p><a href="/">← Back to home</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

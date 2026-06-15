@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Solana Sentry — Transaction monitoring &amp; webhooks</title>
+    <meta
+      name="description"
+      content="Solana Sentry monitors Solana transactions and handles Alchemy webhooks for USDC payment verification. TypeScript + Express."
+    />
+    <meta name="author" content="Kevin Moe Myint Myat" />
+    <meta name="theme-color" content="#9945FF" />
+    <link rel="canonical" href="https://solana-sentry.vercel.app/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Solana Sentry — Transaction monitoring" />
+    <meta
+      property="og:description"
+      content="Query Solana transactions and verify USDC webhook events."
+    />
+    <meta property="og:url" content="https://solana-sentry.vercel.app/" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="/" class="logo">
+          <span class="logo-mark">🛡️</span>
+          <span class="logo-text">Solana<strong>Sentry</strong></span>
+        </a>
+        <nav class="nav">
+          <a href="/docs">Docs</a>
+          <a href="/#features">Features</a>
+          <a href="https://github.com/m3yevn/solana-sentry" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <span class="hero-badge">Solana · TypeScript</span>
+          <h1>Stand guard over your on-chain transactions</h1>
+          <p class="hero-lead">
+            Query parsed Solana transactions and handle Alchemy webhook events —
+            with USDC transfer verification built in.
+          </p>
+          <div class="hero-cta">
+            <a href="/docs" class="btn btn-primary">Read the docs</a>
+            <a href="https://github.com/m3yevn/solana-sentry" class="btn btn-ghost" rel="noopener">View on GitHub</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="features">
+        <div class="container">
+          <h2>What it does</h2>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <h3>🔍 Transaction query</h3>
+              <p>Fetch parsed token balances for any transaction signature via <code>GET /query/:txHash</code>.</p>
+            </article>
+            <article class="feature-card">
+              <h3>🔔 Webhook handler</h3>
+              <p>Receive Alchemy webhook payloads at <code>POST /webhook</code> and verify USDC transfers to your wallet.</p>
+            </article>
+            <article class="feature-card">
+              <h3>⛓️ Solana Web3.js</h3>
+              <p>Built on <code>@solana/web3.js</code> with configurable RPC endpoint (devnet or mainnet).</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="endpoints">
+        <div class="container">
+          <h2>Live API</h2>
+          <pre class="code-block"><code>GET  /health
+GET  /query/:txHash
+POST /webhook</code></pre>
+          <p><a href="/docs#api">Full API reference →</a></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Built by <a href="https://github.com/m3yevn">m3yevn</a> · MIT License</p>
+      </div>
+    </footer>
+  </body>
+</html>
