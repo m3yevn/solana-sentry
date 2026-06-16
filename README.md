@@ -93,7 +93,7 @@ GET /health
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/yourusername/solana-sentry/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/m3yevn/solana-sentry/issues).
 
 ## 📝 License
 

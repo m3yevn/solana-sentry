@@ -1,0 +1,89 @@
+{
+  "examples": [
+    {
+      "id": "usdc-transfer",
+      "label": "USDC transfer",
+      "description": "Token balance changes on a parsed mainnet transaction.",
+      "txHash": "5VERv8NMvzbJMEkVzxSLfNcQSNkCt9KQR2deYmPHAL7",
+      "category": "token",
+      "cached": {
+        "txHash": "5VERv8NMvzbJMEkVzxSLfNcQSNkCt9KQR2deYmPHAL7",
+        "tokens": [
+          { "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", "amount": 1.5 }
+        ],
+        "note": "Illustrative token parse — live RPC may vary."
+      }
+    },
+    {
+      "id": "normal-swap",
+      "label": "DEX swap",
+      "description": "Typical swap with multiple token balance updates.",
+      "txHash": "2nBhEBYYvwwAeMYHmHraFzXVgV9YVVxQ8sLzLx7opump",
+      "category": "swap",
+      "cached": {
+        "txHash": "2nBhEBYYvwwAeMYHmHraFzXVgV9YVVxQ8sLzLx7opump",
+        "tokens": [
+          { "mint": "So11111111111111111111111111111111111111112", "amount": 0.42 },
+          { "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", "amount": 98.12 }
+        ],
+        "note": "Illustrative swap parse."
+      }
+    },
+    {
+      "id": "nft-mint",
+      "label": "NFT mint",
+      "description": "Mint transaction with metadata program involvement.",
+      "txHash": "3Z1HKwmM4Q8h7qJ8vJ8vJ8vJ8vJ8vJ8vJ8vJ8vJ8vJ8vJ8vJ8vJ8vJ8vJ8vJ8v",
+      "category": "nft",
+      "cached": {
+        "txHash": "3Z1HKwmM4Q8h7qJ8vJ8vJ8vJ8vJ8vJ8vJ8vJ8vJ8vJ8vJ8vJ8vJ8vJ8vJ8vJ8v",
+        "tokens": [],
+        "note": "No SPL token balances — NFT mints often show empty token array."
+      }
+    },
+    {
+      "id": "suspicious",
+      "label": "Suspicious pattern",
+      "description": "Rapid outbound transfers — flag for review.",
+      "txHash": "4xKpN9mR2vL8qW3tY6hJ1cF5bD0aE7sU9iO2pM4nK6l",
+      "category": "security",
+      "cached": {
+        "txHash": "4xKpN9mR2vL8qW3tY6hJ1cF5bD0aE7sU9iO2pM4nK6l",
+        "tokens": [
+          { "mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", "amount": -5000 }
+        ],
+        "security": {
+          "risk": "high",
+          "findings": [
+            "Large outbound USDC in single instruction",
+            "Destination wallet not in allowlist",
+            "Velocity spike vs 7-day baseline"
+          ],
+          "recommendation": "Hold settlement and verify beneficiary off-chain."
+        },
+        "note": "Security analysis is illustrative — wire SOLANA_ADDR + USDC_MINT for live webhook checks."
+      }
+    },
+    {
+      "id": "contract-call",
+      "label": "Smart contract",
+      "description": "Program invocation with inner instructions.",
+      "txHash": "5K7nP2mQ8vR4tY9hJ3cF6bD1aE8sU0iO3pM5nL7kW2x",
+      "category": "contract",
+      "cached": {
+        "txHash": "5K7nP2mQ8vR4tY9hJ3cF6bD1aE8sU0iO3pM5nL7kW2x",
+        "tokens": [
+          { "mint": "So11111111111111111111111111111111111111112", "amount": 0.01 }
+        ],
+        "note": "Program calls may include SOL fees without SPL token rows."
+      }
+    }
+  ],
+  "tour": [
+    { "step": 1, "title": "Input", "body": "Paste a transaction signature or click Try Example." },
+    { "step": 2, "title": "Analysis", "body": "Sentry fetches parsed transaction data from Solana RPC." },
+    { "step": 3, "title": "Security checks", "body": "Token deltas, USDC verification, and webhook rules are evaluated." },
+    { "step": 4, "title": "Findings", "body": "Structured JSON highlights mints, amounts, and risk signals." },
+    { "step": 5, "title": "Recommendations", "body": "Actionable next steps for settlement holds or alerts." }
+  ]
+}

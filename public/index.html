@@ -37,6 +37,7 @@
           <span class="logo-text">Solana<strong>Sentry</strong></span>
         </a>
         <nav class="nav">
+          <a href="#demo">Try demo</a>
           <a href="/docs">Docs</a>
           <a href="/#features">Features</a>
           <a href="https://github.com/m3yevn/solana-sentry" rel="noopener">GitHub</a>
@@ -54,8 +55,69 @@
             with USDC transfer verification built in.
           </p>
           <div class="hero-cta">
-            <a href="/docs" class="btn btn-primary">Read the docs</a>
+            <a href="#demo" class="btn btn-primary">Try it now</a>
+            <a href="/docs" class="btn btn-ghost">Read the docs</a>
             <a href="https://github.com/m3yevn/solana-sentry" class="btn btn-ghost" rel="noopener">View on GitHub</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="demo" class="demo">
+        <div class="container">
+          <h2>See how Solana Sentry works</h2>
+          <p class="demo-lead">Paste a transaction signature or click <strong>Try example</strong> — no wallet, no setup.</p>
+
+          <div class="demo-grid">
+            <div class="demo-panel">
+              <label for="tx-input">Transaction signature</label>
+              <div class="demo-input-row">
+                <input id="tx-input" type="text" placeholder="5VERv8NMvzbJMEkVzxSLfNcQSNkCt9KQR2deYmPHAL7" spellcheck="false" />
+                <button type="button" id="analyze-btn" class="btn btn-primary">Analyze</button>
+              </div>
+              <div id="example-chips" class="example-chips" aria-label="Example transactions"></div>
+            </div>
+            <div class="demo-output">
+              <div class="demo-output-header">
+                <span>Analysis output</span>
+                <span id="demo-status" class="demo-status">Ready</span>
+              </div>
+              <pre id="demo-result" class="code-block demo-result"><code>{ "hint": "Click an example or paste a signature" }</code></pre>
+            </div>
+          </div>
+
+          <ol id="tour-steps" class="tour-steps" aria-label="How it works"></ol>
+        </div>
+      </section>
+
+      <section id="showcase" class="showcase">
+        <div class="container">
+          <h2>What you get</h2>
+          <div class="showcase-grid">
+            <article class="showcase-card">
+              <h3>Token parse</h3>
+              <p>Mint addresses and UI amounts from <code>postTokenBalances</code>.</p>
+              <pre class="code-block"><code>{
+  "txHash": "…",
+  "tokens": [
+    { "mint": "EPjF…", "amount": 1.5 }
+  ]
+}</code></pre>
+            </article>
+            <article class="showcase-card">
+              <h3>Webhook verify</h3>
+              <p>Alchemy payloads checked against your wallet + USDC mint.</p>
+              <pre class="code-block"><code>POST /webhook
+→ USDC to SOLANA_ADDR?
+→ amount matches?</code></pre>
+            </article>
+            <article class="showcase-card">
+              <h3>Security signals</h3>
+              <p>Flag suspicious outbound transfers before settlement.</p>
+              <pre class="code-block"><code>{
+  "risk": "high",
+  "findings": ["Large outbound USDC", …]
+}</code></pre>
+            </article>
           </div>
         </div>
       </section>
@@ -93,8 +155,9 @@ POST /webhook</code></pre>
 
     <footer class="site-footer">
       <div class="container">
-        <p>Built by <a href="https://github.com/m3yevn">m3yevn</a> · MIT License</p>
+        <p>Built by <a href="https://github.com/m3yevn">m3yevn</a> · MIT License · <a href="/docs">Docs</a></p>
       </div>
     </footer>
+    <script src="/demo.js" defer></script>
   </body>
 </html>

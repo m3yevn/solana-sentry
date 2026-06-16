@@ -7,6 +7,7 @@
 | Webhook + query API routes | ✅ |
 | SEO (`robots.txt`, `sitemap.xml`) | ✅ |
 | CI workflow | ✅ |
+| Interactive demo + example library on landing | ✅ |
 | Integration tests | 🔜 |
 | npm / GitHub Action publish | 🔜 |
 
