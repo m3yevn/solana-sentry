@@ -6,7 +6,7 @@
 | Vercel deploy | ✅ [solana-sentry.vercel.app](https://solana-sentry.vercel.app) |
 | Webhook + query API routes | ✅ |
 | SEO (`robots.txt`, `sitemap.xml`) | ✅ |
-| CI workflow | 🔜 |
+| CI workflow | ✅ |
 | Integration tests | 🔜 |
 | npm / GitHub Action publish | 🔜 |
 
